@@ -35,7 +35,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
 
   useEffect(() => {
     const gui = new GUI();
-    // gui.close();
+    gui.close();
     gui.domElement.style.zIndex = "100000000";
     const head = nodes.head001;
     const morphDict = head.morphTargetDictionary;

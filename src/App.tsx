@@ -58,15 +58,18 @@ function Content() {
 function Info() {
   const { gl } = useThree();
 
-  const ref = useRef({ points: 0, triangles: 0 });
+  const [triangles, setTriangles] = useState(0);
   useFrame(() => {
-    const { points, triangles } = gl.info.render;
-    Object.assign(ref.current, { points, triangles });
+    if (triangles !== gl.info.render.triangles) {
+      setTriangles(gl.info.render.triangles);
+    }
   }, -1);
 
   return (
     <Html fullscreen>
-      {ref.current.triangles} triangles
+      info:
+      <br />
+      {triangles} triangles
       <br />
     </Html>
   );
